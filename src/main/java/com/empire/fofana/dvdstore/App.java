@@ -2,7 +2,9 @@ package com.empire.fofana.dvdstore;
 
 import com.empire.fofana.dvdstore.entity.Movie;
 import com.empire.fofana.dvdstore.service.MovieService;
+import controller.MovieController;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -11,30 +13,10 @@ import java.util.Scanner;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws IOException
     {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println( "Quel est le titre du film ? :" );
-        String titleFilm = scanner.nextLine();
-        System.out.println( "Quel est le genre du film ? :" );
-        String genreFilm = scanner.nextLine();
-
-        // create a movie
-        Movie movie = new Movie();
-
-        movie.setTitle(titleFilm);
-        movie.setGenre(genreFilm);
-
-        // register movie
-        MovieService movieService = new MovieService();
-
-        movieService.registerMovie(movie);
-
-        System.out.println("New movie added: " + movie.getTitle());
-
-
-
-
+        MovieController movieController = new MovieController();
+        movieController.addUsingConsole();
 
     }
 }
